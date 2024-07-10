@@ -34,8 +34,6 @@ jobs:
         with:
           ruby-version: 3.1.1
           bundler-cache: true
-      - name: Change to backend directory
-        run: cd ports-api
       # Add or replace database setup steps here
       - name: Set up database schema
         run: bin/rails db:schema:load
