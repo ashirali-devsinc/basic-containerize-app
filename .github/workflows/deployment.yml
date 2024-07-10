@@ -27,11 +27,13 @@ jobs:
         with:
           ruby-version: 3.1.1
           bundler-cache: true
-      - name: Change to backend directory
-        run: cd posts-api
+        working-directory: ./posts-api
       - name: Install dependencies
         run: bundle install
+        working-directory: ./posts-api
       - name: Set up database schema
         run: bin/rails db:schema:load
+        working-directory: ./posts-api
       - name: Run tests
         run: bin/rake
+        working-directory: ./posts-api
