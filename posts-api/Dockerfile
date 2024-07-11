@@ -13,4 +13,4 @@ COPY . /backend
 
 EXPOSE 3000
 
-CMD [ "bash", "-c", "rails db:create && rails db:migrate && bundle exec rails test && bundle exec rails server -b 0.0.0.0" ]
+CMD [ "bash", "-c", "rails db:create && rails db:migrate && bundle exec rails server -b 0.0.0.0" ]

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import {
   Card,
-  Input,
   Button,
   Typography,
 } from "@material-tailwind/react";
@@ -50,49 +49,57 @@ const Form = ({formType, id = 0}) => {
   }, []);
 
   return (
-    <Card color="transparent" shadow={false}>
-      <Typography color="gray" className="mt-1 font-normal">
-        {formType} Post
-      </Typography>
-      <form
-        className="mt-8 mb-2 w-80 max-w-screen-lg sm:w-96"
-        onSubmit={handleSubmit}
-      >
-        <div className="mb-1 flex flex-col gap-6">
-          <Typography variant="h6" color="blue-gray" className="-mb-3">
-            Title
-          </Typography>
-          <Input
-            required
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            size="lg"
-            placeholder="Post X"
-            className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
-            labelProps={{
-              className: "before:content-none after:content-none",
-            }}
-          />
-          <Typography variant="h6" color="blue-gray" className="-mb-3">
-            Content
-          </Typography>
-          <Input
-            required
-            value={content}
-            onChange={(e) => setContent(e.target.value)}
-            size="lg"
-            placeholder="Xst Post"
-            className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
-            labelProps={{
-              className: "before:content-none after:content-none",
-            }}
-          />
-        </div>
-        <Button className="mt-6" type="submit" fullWidth>
-          {formType === "Create" ? "Create" : "Update"}
-        </Button>
-      </form>
-    </Card>
+    <div className="flex justify-center mt-52">
+      <Card className="flex items-center border-2 rounded-md w-1/3 shadow-md">
+        <Typography className="font-serif mt-1 font-normal text-3xl text-gray-900">
+          {formType} Post
+        </Typography>
+        <form
+          className="mt-8 mb-2 w-80 max-w-screen-lg sm:w-96"
+          onSubmit={handleSubmit}
+        >
+          <div className="mb-1 flex flex-col gap-6">
+            <Typography
+              variant="h6"
+              className="-mb-3 font-medium text-gray-900"
+            >
+              Title <span className="text-red-500">*</span>
+            </Typography>
+            <input
+              required
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+              size="lg"
+              placeholder="Post X"
+              className="p-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg hover:border-blue-300 focus:border-blue-600 focus:outline-none"
+            />
+            <Typography
+              variant="h6"
+              className="-mb-3 font-medium text-gray-900"
+            >
+              Content <span className="text-red-500">*</span>
+            </Typography>
+            <input
+              required
+              value={content}
+              onChange={(e) => setContent(e.target.value)}
+              size="lg"
+              placeholder="Xst Post"
+              className="p-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg hover:border-blue-300 focus:border-blue-600 focus:outline-none"
+            />
+          </div>
+          <div className="flex justify-center">
+            <Button
+              className="w-1/2 mt-6 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg"
+              type="submit"
+              fullWidth
+            >
+              {formType === "Create" ? "Create" : "Update"}
+            </Button>
+          </div>
+        </form>
+      </Card>
+    </div>
   );
 }
 

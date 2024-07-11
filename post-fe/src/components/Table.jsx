@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Card, Typography } from "@material-tailwind/react";
+import { Button, Card, Typography } from "@material-tailwind/react";
 import { deletePost } from "../../services/PostService";
 
 const Table = ({ TABLE_ROWS }) => {
-  const TABLE_HEAD = ["Title", "Content", "", ""];
+  const TABLE_HEAD = ["Title", "Content", ""];
   const [posts, setPosts] = useState([]);
   const navigate = useNavigate();
 
@@ -27,7 +27,13 @@ const Table = ({ TABLE_ROWS }) => {
 
   return (
     <Card className="h-full w-full overflow-scroll">
-      <table className="w-full min-w-max table-auto text-left">
+      <Typography
+        variant="large"
+        className="text-4xl font-serif underline underline-offset-4 ml-3 mb-2"
+      >
+        Posts Table
+      </Typography>
+      <table className="w-full min-w-max table-fixed text-left">
         <thead>
           <tr>
             {TABLE_HEAD.map((head) => (
@@ -71,29 +77,23 @@ const Table = ({ TABLE_ROWS }) => {
                     {content}
                   </Typography>
                 </td>
-                <td className={classes}>
-                  <Typography
-                    as="a"
-                    href="#"
-                    variant="small"
-                    color="blue-gray"
-                    className="font-medium"
-                    onClick={() => handleEditPost(id)}
-                  >
-                    Edit
-                  </Typography>
-                </td>
-                <td className={classes}>
-                  <Typography
-                    as="a"
-                    href="#"
-                    variant="small"
-                    color="blue-gray"
-                    className="font-medium"
-                    onClick={() => handleDeletePost(id)}
-                  >
-                    Delete
-                  </Typography>
+                <td className={`${classes} flex justify-end`}>
+                  <div className="flex gap-x-2 w-1/2">
+                    <Button
+                      className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 rounded-lg"
+                      onClick={() => handleEditPost(id)}
+                      fullWidth
+                    >
+                      Edit
+                    </Button>
+                    <Button
+                      className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 rounded-lg"
+                      onClick={() => handleDeletePost(id)}
+                      fullWidth
+                    >
+                      Delete
+                    </Button>
+                  </div>
                 </td>
               </tr>
             );
